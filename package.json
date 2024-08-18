@@ -2,16 +2,18 @@
     "name": "ucli",
     "version": "1.0.0",
     "bin": {
-        "mycli": "./index.js"
+        "ucli": "./index.mjs"
     },
-    "main": "index.js",
+    "module": "index.mjs",
+    "type": "module",
     "scripts": {
-        "run": "./index.js"
+        "ucli": "./index.mjs"
     },
     "repository": "git@github.com:ustinian-wang/ucli.git",
     "author": "ustinian-wang <wangjser@gmail.com> (https://github.com/ustinian-wang)",
     "license": "MIT",
     "dependencies": {
+        "axios": "^1.7.4",
         "commander": "^12.1.0",
         "inquirer": "^10.1.8"
     }

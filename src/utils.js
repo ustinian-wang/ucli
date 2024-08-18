@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { mkdirSync, readdirSync, existsSync, copyFileSync } from "fs";
+import { mkdirSync, readdirSync, existsSync, copyFileSync, readFileSync } from "fs";
 
 export function getPackageVersion() {
     // 获取当前目录的 __dirname
@@ -8,7 +8,7 @@ export function getPackageVersion() {
     const __dirname = dirname(__filename);
 
     // 构造 package.json 文件路径
-    const packageJsonPath = new URL('../package.json', `file://${__dirname}`);
+    const packageJsonPath = join(getCwd(), "./package.json");
 
     try {
         // 读取和解析 package.json
@@ -50,11 +50,11 @@ export function copyFileToPath(srcFile, destFilePath) {
     if (!existsSync(destDir)) {
         mkdirSync(destDir, { recursive: true });
     }
-
+    // console.log("existsSync", existsSync(srcFile), existsSync(destFilePath));
     // 复制文件到目标路径
     copyFileSync(srcFile, destFilePath);
 
-    console.log(`File copied to ${destFilePath}`);
+    // console.log(`File copied to ${destFilePath}`);
 }
 
 export function getCwd(){

@@ -2,8 +2,9 @@
 import {Command} from 'commander';
 import inquirer from 'inquirer';
 import {copyDirectorySync, copyFileToPath, getCwd, getPackageVersion} from "./src/utils.js";
-import {dirname, join} from "path";
+import {join} from "path";
 import {readFileSync, writeFileSync} from "fs";
+import {weRobots} from "./src/commands/we-robots.mjs";
 
 const version = getPackageVersion();
 
@@ -37,8 +38,8 @@ program
             {
                 type: 'input',
                 name: 'run',
-                message: 'specify shell',
-                default: 'yarn install && yarn build'
+                message: 'specify shell, like yarn install && yarn build',
+                default: 'echo run'
             },
             {
                 type: 'input',
@@ -49,8 +50,8 @@ program
         ]);
 
         const cwd = getCwd();
-        const src = join(cwd, "./template/github/workflows/");
-        const dest = join(cwd, "./github/workflows/");
+        const src = join(cwd, "./templates/.github/workflows/");
+        const dest = join(cwd, "./.github/workflows/");
         copyDirectorySync(src, dest);
 
         let {
@@ -59,7 +60,7 @@ program
             run,
             build
         } = answers
-        const actionsYml = join(__dirname, "./template/github/workflows/actions.yml");
+        const actionsYml = join(getCwd(), "./templates/.github/workflows/actions.yml");
         let actionsContent = readFileSync(actionsYml).toString("utf8");
         actionsContent = actionsContent
             .replace("${name}", name)
@@ -77,10 +78,56 @@ program.command("git-ignore")
     .description("generate common .gitignore")
     .action(()=>{
         let cwd = getCwd();
-        let src = join(cwd, "template/.gitignore")
+        let src = join(cwd, "templates/.gitignore")
         let dist = join(cwd, ".gitignore")
         copyFileToPath(src, dist);
     })
 
+program
+    .command("we-robots")
+    .argument('<url>', 'robot url')
+    .argument('<content>', 'notice content')
+    .argument('<user>', 'notice user')
+    .action(async function(url, content, user){
+    await weRobots(url, content, user)
+})
+
+// 定义一个命令
+program
+    .command('test')
+    .action(async () => {
+        // // 使用 inquirer 进行交互
+        // const cwd = getCwd();
+        // const src = join(cwd, "./templates/.github/workflows/");
+        // const dest = join(cwd, "./.github/workflows/");
+        // copyDirectorySync(src, dest);
+        //
+        // let {
+        //     name,
+        //     branch,
+        //     run,
+        //     build
+        // } = {
+        //     name: "ucli",
+        //     branch: "main",
+        //     run: "echo test",
+        //     build: "/"
+        // };
+        // const actionsYml = join(getCwd(), "./templates/.github/workflows/actions.yml");
+        // let actionsContent = readFileSync(actionsYml).toString("utf8");
+        // actionsContent = actionsContent
+        //     .replace("${name}", name)
+        //     .replace("${branch}", branch)
+        //     .replace("${run}", run)
+        //     .replace("${build}", build);
+        // writeFileSync(actionsYml, actionsContent);
+
+        // console.log(`${answers.greeting}, ${answers.name}!`);
+    });
+
+
 // 解析命令行参数
 program.parse(process.argv);
+// console.log("run cli")
+//
+// ucli we-robots "wwwww" "winger";
