@@ -2,19 +2,25 @@
     "name": "ucli",
     "version": "1.0.0",
     "bin": {
-        "ucli": "./index.mjs"
+        "ucli": "./index.js"
     },
-    "module": "index.mjs",
+    "module": "index.js",
     "type": "module",
     "scripts": {
-        "ucli": "./index.mjs"
+        "ucli": "./index.js"
     },
     "repository": "git@github.com:ustinian-wang/ucli.git",
     "author": "ustinian-wang <wangjser@gmail.com> (https://github.com/ustinian-wang)",
     "license": "MIT",
     "dependencies": {
+        "@babel/parser": "^7.25.3",
+        "@babel/traverse": "^7.25.3",
+        "@babel/types": "^7.25.2",
+        "@vue/compiler-sfc": "^3.4.38",
         "axios": "^1.7.4",
+        "colors": "^1.4.0",
         "commander": "^12.1.0",
-        "inquirer": "^10.1.8"
+        "inquirer": "^10.1.8",
+        "vue-template-compiler": "^2.7.16"
     }
 }

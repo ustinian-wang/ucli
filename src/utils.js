@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
-import { mkdirSync, readdirSync, existsSync, copyFileSync, readFileSync } from "fs";
+import { mkdirSync, readdirSync, existsSync, copyFileSync, readFileSync, statSync } from "fs";
 
 export function getPackageVersion() {
     // 获取当前目录的 __dirname
@@ -59,4 +59,19 @@ export function copyFileToPath(srcFile, destFilePath) {
 
 export function getCwd(){
     return process.cwd();
+}
+
+/**
+ * @param dir
+ * @param callBack
+ */
+export function travelFile(dir, callBack) {
+    readdirSync(dir).forEach((file) => {
+        var pathname = join(dir, file);
+        if (statSync(pathname).isDirectory()) {
+            travelFile(pathname, callBack);
+        } else {
+            callBack(pathname);
+        }
+    });
 }

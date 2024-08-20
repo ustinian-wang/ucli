@@ -1,0 +1,14 @@
+
+- [ ] 脚手架
+	- [ ] 项目清单
+		- [ ] mallapp
+		- [ ] mallmobi
+		- [ ] mallhelper
+		- [ ] mallsite
+		- [ ] mallallsite
+	- [ ] 阶段
+		- [ ] clone
+		- [ ] serve
+		- [ ] build
+		- [ ] test
+- [ ] 

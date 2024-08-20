@@ -1,13 +1,19 @@
 import axios from "axios";
 
+/**
+ * @param {string} webhookUrl
+ * @param {string} content
+ * @param {string} [user=""]
+ * @example
+ * ucli we-robots https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=3dfe1462-813c-4c48-845d-8e5bf7cfd9eb test jser
+ * @returns {Promise<void>}
+ */
 export async function weRobots(webhookUrl="", content="", user=""){
     // let config = getConfig();
     // if(isEmptyObj(config)){
     //     //todo 请配置密钥
     //     return;
     // }
-
-
 
     // text = text
     //     ? text
@@ -28,11 +34,12 @@ export async function weRobots(webhookUrl="", content="", user=""){
     //     },
     // };
 
+    let atUser = user ? `<@${user}> ` : " ";
     // 消息内容，包括 @ 用户
     const message = {
         msgtype: 'markdown',
         markdown: {
-            content: `<@${user}> ${content}`,
+            content: `${atUser}${content}`,
         }
     };
 
