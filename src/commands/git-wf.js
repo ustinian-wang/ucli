@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import {copyDirectorySync, getCwd} from "../utils.js";
+import {copyDirectorySync, getCwd, getRoot} from "../utils.js";
 import {join} from "path";
 import {readFileSync, writeFileSync} from "fs";
 
@@ -7,9 +7,8 @@ export async function gitWf(){
     // 使用 inquirer 进行交互
     const options = await getParamsByInquirer()
 
-    const cwd = getCwd();
-    const src = join(cwd, "./templates/.github/workflows/");
-    const dest = join(cwd, "./.github/workflows/");
+    const src = join(getRoot(), "./templates/.github/workflows/");
+    const dest = join(getCwd(), "./.github/workflows/");
     copyDirectorySync(src, dest);
 
     genWorkflowsFile(options);
@@ -59,7 +58,7 @@ function genWorkflowsFile(params){
         run,
         build
     } = params
-    const actionsYml = join(getCwd(), "./templates/.github/workflows/actions.yml");
+    const actionsYml = join(getRoot(), "./templates/.github/workflows/actions.yml");
     let actionsContent = readFileSync(actionsYml).toString("utf8");
     actionsContent = actionsContent
         .replace("${name}", name)

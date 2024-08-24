@@ -1,0 +1,199 @@
+{
+  "main": {
+    "id": "cd2213db995d76b7",
+    "type": "split",
+    "children": [
+      {
+        "id": "fee1cba6587c018d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c24a980126587afa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/notes/optimize-page-performance.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c136b00a5f066113",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b3df8f1bebfa991",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bc25bc76e648577b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "14549cfd65bbec91",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "5618ea08572a7885",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 261.5
+  },
+  "right": {
+    "id": "534ae2f23a9b492c",
+    "type": "split",
+    "children": [
+      {
+        "id": "91f0b5cf3813a288",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ba5af1873197f941",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/notes/optimize-page-performance.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a225c2a6b67f2f93",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/notes/optimize-page-performance.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "6c5d4f67ff626818",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "7d4a19cfca885d62",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/notes/optimize-page-performance.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "c24a980126587afa",
+  "lastOpenFiles": [
+    "docs/images/docs/guide/guide-requirement-implement/IMG-20240824152617264.png",
+    "docs/images/docs/guide/guide-requirement-implement/IMG-20240824152236945.png",
+    "docs/images/docs/guide/guide-requirement-implement/IMG-20240824145637181.png",
+    "docs/images/docs/guide/guide-requirement-implement/IMG-20240824151928820.png",
+    "docs/images/docs/guide/guide-requirement-implement",
+    "docs/images/docs/guide",
+    "docs/guide/guide-requirement-implement.md",
+    "docs/todo/TODO.md",
+    "docs/notes/optimize-page-performance.md",
+    "node_modules/@types/node/async_hooks.d.ts",
+    "node_modules/@types/node/timers",
+    "node_modules/@types/node/stream",
+    "node_modules/@types/node/dns",
+    "node_modules/@types/node/readline",
+    "node_modules/@types/node/fs",
+    "node_modules/@types/node/assert",
+    "node_modules/undici-types",
+    "docs/works.md",
+    "docs/todo/todo-nestjs.md",
+    "docs/secure/secure-xss.md",
+    "docs/secure/secure-npm.md",
+    "docs/secure/secure-jsonp.md",
+    "docs/secure/secure-csrf.md",
+    "docs/reading-notes/to-be-a-effective-engineer.md",
+    "docs/reading-notes/thinking-like-rocket-expert.md",
+    "docs/reading-notes/McKinsey-7-Step-Problem-Solving-Process.md",
+    "docs/notes/troubleshooting-how-to-download-github-by-ssh.md",
+    "docs/notes/troubleshooting-common.md",
+    "docs/notes/Test.md",
+    "docs/notes/troubleshooting-hotel.md",
+    "docs/notes/tech-rich-text.md",
+    "docs/notes/template-tech-implement.md",
+    "docs/notes/tech-monitor.md",
+    "docs/notes/tech-cross-domain.md",
+    "docs/notes/system-design.md",
+    "docs/notes/README.md",
+    "docs/notes/issue-url-encode.md",
+    "docs/notes/react-quick-start.md",
+    "docs/mini-program/troubleshooting-uniapp.md",
+    "docs/images/test_testCase.gif",
+    "docs/images/test_productListTestCase.gif",
+    "docs/images/tech_monitor.png",
+    "docs/images/itil/upload_release.png",
+    "docs/images/itil/upload_normal.png",
+    "docs/images/itil/upload_blank.png",
+    "docs/images/img_1.png",
+    "Untitled.canvas"
+  ]
+}

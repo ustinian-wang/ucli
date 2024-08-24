@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import {Command} from 'commander';
-import {copyFileToPath, getCwd, getPackageVersion} from "./src/utils.js";
+import {copyFileToPath, getCwd, getPackageVersion, getRoot} from "./src/utils.js";
 import {dirname, join} from "path";
 import {weRobots} from "./src/commands/we-robots.js";
 import {gitWf} from "./src/commands/git-wf.js";
@@ -8,6 +8,7 @@ import {checkCommit} from "./src/commands/check/index.js";
 import { execSync } from "child_process";
 import {fileURLToPath} from "url";
 import {mdOds} from "./src/commands/md-ods.js";
+import {gitIgnore} from "./src/commands/git-ignore.js";
 
 const version = getPackageVersion();
 
@@ -22,22 +23,13 @@ program
 program
     .command('git-wf')
     .description('generate workflows of git pages')
-    .action(async () => {
-        await gitWf()
-    });
+    .action(gitWf);
 
 
 // 定义一个命令
 program.command("git-ignore")
     .description("generate common .gitignore")
-    .action(()=>{
-        let cwd = getCwd();
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
-        let src = join(__dirname, "templates/.gitignore")
-        let dist = join(getCwd(), ".gitignore")
-        copyFileToPath(src, dist);
-    })
+    .action(gitIgnore)
 
 
 // 定义一个命令

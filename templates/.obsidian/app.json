@@ -1,0 +1,9 @@
+{
+  "attachmentFolderPath": "docs/images",
+  "promptDelete": false,
+  "newFileLocation": "folder",
+  "newFileFolderPath": "docs/images",
+  "alwaysUpdateLinks": true,
+  "newLinkFormat": "relative",
+  "useMarkdownLinks": true
+}
