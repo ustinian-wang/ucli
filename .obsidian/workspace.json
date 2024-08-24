@@ -148,6 +148,7 @@
   },
   "active": "40df54370ead82eb",
   "lastOpenFiles": [
+    "package.json~",
     "src/commands/md-ods.js~",
     "index.js~",
     "src/commands/md-ods.js",
@@ -158,7 +159,6 @@
     "node_modules/de-indent/index.js",
     "node_modules/de-indent/package.json",
     "node_modules/vue-template-compiler/types/index.d.ts",
-    "node_modules/vue-template-compiler/types",
     "node_modules/he/README.md",
     "node_modules/@vue/compiler-sfc/README.md",
     "node_modules/@vue/compiler-core/README.md",
