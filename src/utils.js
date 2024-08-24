@@ -1,6 +1,6 @@
-import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
-import { mkdirSync, readdirSync, existsSync, copyFileSync, readFileSync, statSync } from "fs";
+import {fileURLToPath} from 'url';
+import {dirname, join} from 'path';
+import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync} from "fs";
 
 export function getPackageVersion() {
     // 获取当前目录的 __dirname
@@ -59,6 +59,12 @@ export function copyFileToPath(srcFile, destFilePath) {
 
 export function getCwd(){
     return process.cwd();
+}
+
+export function getRoot(){
+    // 获取当前目录的 __dirname
+    const __filename = fileURLToPath(import.meta.url);
+    return join(dirname(__filename), "..");
 }
 
 /**

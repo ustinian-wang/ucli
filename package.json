@@ -1,6 +1,6 @@
 {
-    "name": "ucli",
-    "version": "1.0.0",
+    "name": "@ustinian-wang/ucli",
+    "version": "0.0.1",
     "bin": {
         "ucli": "./index.js"
     },

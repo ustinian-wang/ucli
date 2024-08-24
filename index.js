@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 import {Command} from 'commander';
 import {copyFileToPath, getCwd, getPackageVersion} from "./src/utils.js";
-import {join} from "path";
+import {dirname, join} from "path";
 import {weRobots} from "./src/commands/we-robots.js";
 import {gitWf} from "./src/commands/git-wf.js";
 import {checkCommit} from "./src/commands/check/index.js";
 import { execSync } from "child_process";
+import {fileURLToPath} from "url";
+import {mdOds} from "./src/commands/md-ods.js";
 
 const version = getPackageVersion();
 
@@ -30,8 +32,10 @@ program.command("git-ignore")
     .description("generate common .gitignore")
     .action(()=>{
         let cwd = getCwd();
-        let src = join(cwd, "templates/.gitignore")
-        let dist = join(cwd, ".gitignore")
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = dirname(__filename);
+        let src = join(__dirname, "templates/.gitignore")
+        let dist = join(getCwd(), ".gitignore")
         copyFileToPath(src, dist);
     })
 
@@ -46,7 +50,6 @@ program.command("git-check")
     })
 
 
-
 program
     .command("we-robots")
     .description("send message to WeCom")
@@ -56,6 +59,11 @@ program
     .action(async function(url, content, user){
     await weRobots(url, content, user)
 })
+
+program
+    .command("md-ods")
+    .description("add .obsidian into current dir for markdown writing")
+    .action(mdOds)
 
 // 定义一个命令
 program
