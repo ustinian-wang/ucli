@@ -7,7 +7,7 @@ This is a command line tool for improving effective in development
 ## Installation
 
 ```shell
-npm install ucli -g
+npm install @ustinian-wang/ucli -g
 ```
 
 ## commands
