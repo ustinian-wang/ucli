@@ -1,6 +1,9 @@
 import sharp from "sharp";
-import {readdirSync, unlinkSync, createWriteStream, writeFileSync} from "fs";
+import {createWriteStream, readdirSync, readFileSync, unlinkSync, writeFileSync} from "fs";
 import {extname, join} from "path";
+import {createCanvas} from 'canvas';
+import JPEG from 'jpeg-js';
+import GIFEncoder from 'gifencoder';
 
 /**
  * @description convert png to jpg
@@ -37,11 +40,6 @@ export function  deletePngFiles (directory) {
     }
 }
 
-
-
-import { createCanvas } from 'canvas';
-import JPEG from 'jpeg-js';
-import GIFEncoder from 'gifencoder';
 
 // 生成随机颜色
 const getRandomColor = () => `#${Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0')}`;
@@ -125,6 +123,43 @@ export const generateImage = (width=800, height=800, format='png', filePath='out
             console.log('Unsupported format. Please use png, jpeg, or gif.');
     }
 };
+
+export function img2base64(imagePath=''){
+    let data = readFileSync(imagePath);
+    // 将图片数据转换为 Base64 编码
+    return Buffer.from(data).toString('base64');
+}
+
+export function img2base64url(imagePath=''){
+    // 获取图片的 MIME 类型
+    const ext = extname(imagePath).toLowerCase();
+    let mimeType;
+
+    switch (ext) {
+        case '.png':
+            mimeType = 'image/png';
+            break;
+        case '.jpg':
+        case '.jpeg':
+            mimeType = 'image/jpeg';
+            break;
+        case '.gif':
+            mimeType = 'image/gif';
+            break;
+        case '.svg':
+            mimeType = 'image/svg+xml';
+            break;
+        default:
+            console.error('Unsupported file type');
+            return;
+    }
+
+    // 将图片数据转换为 Base64 编码
+    const base64Image = img2base64(imagePath);
+
+    // 构建 Data URI
+    return `data:${mimeType};base64,${base64Image}`;
+}
 
 // // 解析命令行参数
 // const [,, width = '800', height = '600', format = 'png', outputPath = 'output.png'] = process.argv;

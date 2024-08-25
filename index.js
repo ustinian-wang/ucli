@@ -9,9 +9,10 @@ import {mdOds} from "./src/commands/md-ods.js";
 import {gitIgnore} from "./src/commands/git-ignore.js";
 import {mdPng2jpg} from "./src/commands/md-png2jpg.js";
 import {png2jpg} from "./src/commands/png2jpg.js";
-import {generateImage} from "./src/utils/file.js";
+import {generateImage, img2base64url} from "./src/utils/file.js";
 import {getCwd, getPath} from "./src/utils/fsPath.js";
 import {join} from "path";
+import {readFileSync} from "fs";
 
 const version = getPackageVersion();
 
@@ -89,6 +90,15 @@ program
         // 调用函数
         generateImage(parseInt(width), parseInt(height), type, outputPath);
 })
+
+program.command("img2base64url")
+    .description("convert img to base64")
+    .argument('<file>', 'file path; like ./a.png')
+    .action((file)=>{
+        file = getPath(file);
+        let base64 = img2base64url(file)
+        console.log(base64);
+    })
 
 // 解析命令行参数
 program.parse(process.argv);
