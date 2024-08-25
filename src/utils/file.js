@@ -4,6 +4,7 @@ import {extname, join} from "path";
 import {createCanvas} from 'canvas';
 import JPEG from 'jpeg-js';
 import GIFEncoder from 'gifencoder';
+import EPUB from "epub-gen";
 
 /**
  * @description convert png to jpg
@@ -103,7 +104,7 @@ const generateGIF = (canvas, filePath) => {
 * @param {string} [format='png']
  * @param {string} [filePath='output.png']
  */
-export const generateImage = (width=800, height=800, format='png', filePath='output.png') => {
+export const generateFile = (width=800, height=800, format='png', filePath='output.png') => {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = getRandomColor();
@@ -119,8 +120,37 @@ export const generateImage = (width=800, height=800, format='png', filePath='out
         case 'gif':
             generateGIF(canvas, filePath);
             break;
+        case 'epub':
+            generateEpub(filePath);
         default:
             console.log('Unsupported format. Please use png, jpeg, or gif.');
+    }
+};
+
+
+// 定义EPUB文件的内容
+const generateEpub = async (filePath) => {
+    const option = {
+        title: "随机EPUB", // 书名
+        author: "随机作者", // 作者
+        content: [
+            {
+                title: "章节1",
+                data: "<h1>这是第一章</h1><p>这里是一些随机内容。</p>"
+            },
+            {
+                title: "章节2",
+                data: "<h1>这是第二章</h1><p>更多的随机内容。</p>"
+            }
+        ]
+    };
+
+    try {
+        // 生成EPUB文件
+        await new EPUB(option, filePath).promise;
+        console.log("EPUB文件生成成功!");
+    } catch (err) {
+        console.error("生成EPUB文件时出错:", err);
     }
 };
 
@@ -165,4 +195,4 @@ export function img2base64url(imagePath=''){
 // const [,, width = '800', height = '600', format = 'png', outputPath = 'output.png'] = process.argv;
 //
 // // 调用函数
-// generateImage(parseInt(width), parseInt(height), format, outputPath);
+// generateFile(parseInt(width), parseInt(height), format, outputPath);

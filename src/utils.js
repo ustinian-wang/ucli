@@ -1,13 +1,12 @@
-import {fileURLToPath} from 'url';
 import {dirname, join} from 'path';
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync} from "fs";
-import {getCwd} from "./utils/fsPath.js";
+import {getRoot} from "./utils/fsPath.js";
 
 export function getPackageVersion() {
     // 获取当前目录的 __dirname
 
     // 构造 package.json 文件路径
-    const packageJsonPath = join(getCwd(), "./package.json");
+    const packageJsonPath = join(getRoot(), "./package.json");
 
     try {
         // 读取和解析 package.json
