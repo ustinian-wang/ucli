@@ -36,5 +36,8 @@ Commands:
   md-ods                            add .obsidian into current dir for markdown writing
   md-png2jpg                        convert png to jpg in docs/*md and then delete png files
   png2jpg <file>                    convert png to jpg
+  fs-g [options]                    generate random file with specified extension
+  img2base64url <file>              convert img to base64
   help [command]                    display help for command
+
 ```
