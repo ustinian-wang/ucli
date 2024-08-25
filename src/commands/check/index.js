@@ -1,5 +1,5 @@
 import {join, dirname} from "path";
-import {getCwd, travelFile} from "../../utils.js";
+import {travelFile} from "../../utils.js";
 import {readFileSync} from "fs";
 import {fileURLToPath} from "url";
 import {ErrorCollector} from "./tools/ErrorCollector.js";
@@ -8,6 +8,7 @@ import checkStyleFile from "./specifications/style/index.js";
 import checkVueFile from "./specifications/vue/index.js";
 import checkJavascriptFile from "./specifications/javascript/index.js";
 import checkOtherFile from "./specifications/other/index.js";
+import {getCwd} from "../../utils/fsPath.js";
 // 获取当前目录的 __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

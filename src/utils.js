@@ -1,11 +1,10 @@
 import {fileURLToPath} from 'url';
 import {dirname, join} from 'path';
 import {copyFileSync, existsSync, mkdirSync, readdirSync, readFileSync, statSync} from "fs";
+import {getCwd} from "./utils/fsPath.js";
 
 export function getPackageVersion() {
     // 获取当前目录的 __dirname
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
 
     // 构造 package.json 文件路径
     const packageJsonPath = join(getCwd(), "./package.json");
@@ -50,21 +49,7 @@ export function copyFileToPath(srcFile, destFilePath) {
     if (!existsSync(destDir)) {
         mkdirSync(destDir, { recursive: true });
     }
-    // console.log("existsSync", existsSync(srcFile), existsSync(destFilePath));
-    // 复制文件到目标路径
     copyFileSync(srcFile, destFilePath);
-
-    // console.log(`File copied to ${destFilePath}`);
-}
-
-export function getCwd(){
-    return process.cwd();
-}
-
-export function getRoot(){
-    // 获取当前目录的 __dirname
-    const __filename = fileURLToPath(import.meta.url);
-    return join(dirname(__filename), "..");
 }
 
 /**
@@ -73,7 +58,7 @@ export function getRoot(){
  */
 export function travelFile(dir, callBack) {
     readdirSync(dir).forEach((file) => {
-        var pathname = join(dir, file);
+        let pathname = join(dir, file);
         if (statSync(pathname).isDirectory()) {
             travelFile(pathname, callBack);
         } else {

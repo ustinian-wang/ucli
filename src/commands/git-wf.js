@@ -1,7 +1,8 @@
 import inquirer from "inquirer";
-import {copyDirectorySync, getCwd, getRoot} from "../utils.js";
+import {copyDirectorySync} from "../utils.js";
 import {join} from "path";
 import {readFileSync, writeFileSync} from "fs";
+import {getCwd, getRoot} from "../utils/fsPath.js";
 
 export async function gitWf(){
     // 使用 inquirer 进行交互
