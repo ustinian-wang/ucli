@@ -1,6 +1,6 @@
 {
     "name": "@ustinian-wang/ucli",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "bin": {
         "ucli": "./index.js"
     },
@@ -18,9 +18,12 @@
         "@babel/types": "^7.25.2",
         "@vue/compiler-sfc": "^3.4.38",
         "axios": "^1.7.4",
+        "canvas": "^2.11.2",
         "colors": "^1.4.0",
         "commander": "^12.1.0",
+        "gifencoder": "^2.0.1",
         "inquirer": "^10.1.8",
+        "jpeg-js": "^0.4.4",
         "sharp": "^0.33.5",
         "vue-template-compiler": "^2.7.16"
     },

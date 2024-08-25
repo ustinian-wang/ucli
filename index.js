@@ -9,6 +9,9 @@ import {mdOds} from "./src/commands/md-ods.js";
 import {gitIgnore} from "./src/commands/git-ignore.js";
 import {mdPng2jpg} from "./src/commands/md-png2jpg.js";
 import {png2jpg} from "./src/commands/png2jpg.js";
+import {generateImage} from "./src/utils/file.js";
+import {getCwd, getPath} from "./src/utils/fsPath.js";
+import {join} from "path";
 
 const version = getPackageVersion();
 
@@ -65,6 +68,27 @@ program
     .argument('<file>', 'file path; like ./a.png')
     .description("convert png to jpg")
     .action(png2jpg)
+
+program
+    .command("fs-g")
+    .description("generate random file with specified extension")
+    .option('-w, --width <width>', 'Specify the width(800)', parseInt, 800)  // 带有默认值的选项
+    .option('-h, --height <height>', 'Specify the height(800)', parseInt, 800)  // 带有默认值的选项
+    .option('-t, --type <type>', 'Specify file ext(png)', "png")  // 带有默认值的选项，使用解析函数
+    .option('-n, --name <name>', 'Specify name(output)', "output")  // 带有默认值的选项，使用解析函数
+    .description("convert png to jpg")
+    .action(async(options)=>{
+        let {
+            width, height,
+            type,
+            name,
+        } = options;
+
+        let outputPath = getPath(join(getCwd(), name));
+        outputPath+= "."+type;
+        // 调用函数
+        generateImage(parseInt(width), parseInt(height), type, outputPath);
+})
 
 // 解析命令行参数
 program.parse(process.argv);
