@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 import {Command} from 'commander';
-import {copyFileToPath, getCwd, getPackageVersion, getRoot} from "./src/utils.js";
-import {dirname, join} from "path";
+import {getCwd, getPackageVersion} from "./src/utils.js";
+import {join, isAbsolute} from "path";
 import {weRobots} from "./src/commands/we-robots.js";
 import {gitWf} from "./src/commands/git-wf.js";
 import {checkCommit} from "./src/commands/check/index.js";
 import { execSync } from "child_process";
-import {fileURLToPath} from "url";
 import {mdOds} from "./src/commands/md-ods.js";
 import {gitIgnore} from "./src/commands/git-ignore.js";
+import {convertPngToJpg, png2jpg} from "./src/commands/png2jpg.js";
 
 const version = getPackageVersion();
 
@@ -56,6 +56,26 @@ program
     .command("md-ods")
     .description("add .obsidian into current dir for markdown writing")
     .action(mdOds)
+
+program
+    .command("md-png2jpg")
+    .description("convert png to jpg in docs/*md and then delete png files")
+    .action(async()=>{
+        let cwd = getCwd()
+        await png2jpg(join(cwd, "docs"));
+    })
+
+program
+    .command("png2jpg")
+    .argument('<file>', 'file path; like ./a.png')
+    .description("convert png to jpg")
+    .action(async(file)=>{
+        let cwd = getCwd()
+        let pngFilePath = isAbsolute(file) ? file : join(cwd, file)
+        let jpgFilePath = pngFilePath.replace(".png", ".jpg")
+        await convertPngToJpg(pngFilePath, jpgFilePath);
+    })
+
 
 // 定义一个命令
 program
